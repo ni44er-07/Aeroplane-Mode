@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flight Card with Airplane Animation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 40px;
+    }
+
+    .flight-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 24px;
+      background: linear-gradient(to bottom right, #ffffff, #f8fbff);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .flight-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .flight-card .card-body {
+      position: relative;
+      z-index: 1;
+      text-align: left;
+    }
+
+    .card-icon {
+      font-size: 48px;
+      color: #2980b9;
+      margin-bottom: 15px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .card-text span {
+      color: #2980b9;
+      font-weight: 600;
+    }
+
+    .flight-route {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .airport-code {
+      font-weight: bold;
+      color: #34495e;
+    }
+
+    .timeline {
+      position: relative;
+      flex-grow: 1;
+      height: 4px;
+      background-color: #dcdcdc;
+      border-radius: 2px;
+    }
+
+    .card-link {
+      display: inline-block;
+      padding: 10px 24px;
+      background: linear-gradient(135deg, #3498db, #2c80d3);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .card-link:hover {
+      background: linear-gradient(135deg, #2c80d3, #2471a3);
+    }
+
+    .airplane-animation {
+      position: fixed;
+      top: 50%;
+      left: -100px;
+      font-size: 60px; /* Bigger airplane */
+      z-index: 9999;
+      transform: rotate(45deg);
+      opacity: 0;
+    }
+
+    .airplane-animation.fly {
+      animation: fly-across 2s ease forwards;
+    }
+
+    @keyframes fly-across {
+      0% {
+        left: -100px;
+        top: 60%;
+        opacity: 1;
+        transform: rotate(20deg);
+      }
+      50% {
+        transform: rotate(10deg);
+      }
+      100% {
+        left: 110%;
+        top: 20%;
+        opacity: 0;
+        transform: rotate(0deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card flight-card mb-3">
+    <div class="card-body">
+      <i class="fas fa-plane-departure card-icon"></i>
+
+      <h4 class="card-title">Flight {{ doc.title or doc.name }} | {{ doc.airplane }}</h4>
+
+      <div class="flight-route">
+        <span class="airport-code">{{ doc.source_airport_code }}</span>
+        <div class="timeline"></div>
+        <span class="airport-code">{{ doc.destination_airport_code }}</span>
+      </div>
+
+      <p class="card-text">
+        {{ frappe.utils.format_date(doc.date_of_departure, "d MMMM, YYYY") }} |
+        {{ doc.time_of_departure }} |
+        {{ frappe.utils.format_duration(doc.duration) }}
+      </p>
+
+      <!-- ✅ Route-based link -->
+      <a href="{{ doc.route }}" class="card-link" id="view-flight">View Flight</a>
+    </div>
+  </div>
+
+  <!-- Hidden airplane animation -->
+  <div class="airplane-animation" id="animated-plane">✈️</div>
+
+  <script>
+    const button = document.getElementById("view-flight");
+    const airplane = document.getElementById("animated-plane");
+
+    button.addEventListener("click", function (e) {
+      // Don't stop route navigation
+      airplane.classList.remove("fly");
+      void airplane.offsetWidth; // Force reflow
+      airplane.classList.add("fly");
+    });
+  </script>
+
+</body>
+</html>

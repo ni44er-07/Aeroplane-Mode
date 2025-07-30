@@ -1,0 +1,102 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+  .flight-form-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    background: linear-gradient(to bottom right, #ffffff, #f8fbff);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    max-width: 650px;
+    margin: 40px auto;
+  }
+
+  .flight-form-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .flight-form-card .form-icon {
+    font-size: 48px;
+    color: #2980b9;
+    margin-bottom: 15px;
+  }
+
+  .flight-form-card h2 {
+    font-size: 26px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #34495e;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+
+  .submit-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #3498db, #2c80d3);
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .submit-button:hover {
+    background: linear-gradient(135deg, #2c80d3, #2471a3);
+  }
+</style>
+
+<div class="flight-form-card">
+  <div class="form-header">
+    <i class="fas fa-plane-departure form-icon"></i>
+    <h2>Book Your Flight</h2>
+  </div>
+
+  <div class="form-group">
+    <label for="passenger">Passenger</label>
+    <input type="text" name="passenger" required placeholder="Enter Passenger Name or ID" />
+  </div>
+
+  <div class="form-group">
+    <label for="flight">Flight</label>
+    <input type="text" name="flight" required placeholder="Enter Flight ID or Code" />
+  </div>
+
+  <div class="form-group">
+    <label for="flight_price">Flight Price</label>
+    <input type="number" name="flight_price" required placeholder="Enter Price" />
+  </div>
+
+  <button type="submit" class="submit-button">Submit Booking</button>
+</div>

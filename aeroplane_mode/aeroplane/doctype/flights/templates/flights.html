@@ -1,0 +1,165 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+
+<!-- Flight Title -->
+<h1>{{ title }}</h1>
+
+<!-- Flight Card -->
+<div class="flight-card">
+  <div class="card-body">
+    <i class="fas fa-plane-departure card-icon"></i>
+
+    <h4 class="card-title">
+      Flight {{ doc.name or "N/A" }} | {{ doc.airplane or "N/A" }}
+    </h4>
+
+    <div class="flight-route">
+      <span class="airport-code">{{ doc.source_airport or "Source" }}</span>
+      <div class="timeline"></div>
+      <span class="airport-code">{{ doc.destination_airport or "Destination" }}</span>
+    </div>
+
+    <p class="card-text">
+      {{ frappe.utils.format_date(doc.date_of_departure, "YYYY-MM-DD") or "N/A" }} |
+      {{ doc.time_of_departure or "N/A" }} |
+      {{ frappe.utils.format_duration(doc.duration) or "N/A" }}
+    </p>
+
+    <a href="/book-flight-ticket/new?Flight={{ title }}" class="card-link" id="view-flight">Book Flight</a>
+  </div>
+</div>
+
+<!-- Airplane Animation -->
+<div class="airplane-animation" id="animated-plane">✈️</div>
+
+<!-- Styles -->
+<style>
+  .flight-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    background: linear-gradient(to bottom right, #ffffff, #f8fbff);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 600px;
+    margin: 20px auto;
+    position: relative;
+  }
+
+  .flight-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .card-icon {
+    font-size: 48px;
+    color: #2980b9;
+    margin-bottom: 15px;
+  }
+
+  .card-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .card-text span {
+    color: #2980b9;
+    font-weight: 600;
+  }
+
+  .flight-route {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .airport-code {
+    font-weight: bold;
+    color: #34495e;
+  }
+
+  .timeline {
+    position: relative;
+    flex-grow: 1;
+    height: 4px;
+    background-color: #dcdcdc;
+    border-radius: 2px;
+  }
+
+  .card-link {
+    display: inline-block;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, #3498db, #2c80d3);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-link:hover {
+    background: linear-gradient(135deg, #2c80d3, #2471a3);
+  }
+
+  .airplane-animation {
+    position: fixed;
+    top: 50%;
+    left: -100px;
+    font-size: 60px;
+    z-index: 9999;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+
+  .airplane-animation.fly {
+    animation: fly-across 2s ease forwards;
+  }
+
+  @keyframes fly-across {
+    0% {
+      left: -100px;
+      top: 60%;
+      opacity: 1;
+      transform: rotate(20deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    100% {
+      left: 110%;
+      top: 20%;
+      opacity: 0;
+      transform: rotate(0deg);
+    }
+  }
+</style>
+
+<!-- JS Animation -->
+<script>
+  const button = document.getElementById("view-flight");
+  const airplane = document.getElementById("animated-plane");
+
+  button.addEventListener("click", function (e) {
+    e.preventDefault();
+    airplane.classList.remove("fly");
+    void airplane.offsetWidth; // reset animation
+    airplane.classList.add("fly");
+
+    setTimeout(() => {
+      window.location.href = button.getAttribute("href");
+    }, 1000); // delay for animation
+  });
+</script>
+
+{% endblock %}

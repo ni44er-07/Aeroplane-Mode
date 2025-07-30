@@ -1,0 +1,30 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2025-07-25 12:49:45.633862",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2025-07-25 16:35:40.144357",
+ "modified_by": "Administrator",
+ "module": "Aeroplane",
+ "name": "Add on Populartiy",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\r\n    ai.item AS \"Add-on Type:Link/Airplane Ticket Add-on item\",\r\n    COUNT(*) AS \"Sold Count:Int\"\r\nFROM\r\n    `tabAirplane Ticket Add-on item` ai\r\nJOIN\r\n    `tabAirplane Ticket` at ON at.name = ai.parent\r\nWHERE\r\n    at.docstatus = 1\r\nGROUP BY\r\n    ai.item\r\n\r\n",
+ "ref_doctype": "Airplane Ticket",
+ "report_name": "Add on Populartiy",
+ "report_script": "\\SELECT\r\n    item AS \"Add-on Name:Link/Airplane Ticket Add-on Item\",\r\n    COUNT(*) AS \"Sold Count:Int\"\r\nFROM\r\n    `tabAirplane Ticket Add-on Item`\r\nWHERE\r\n    parenttype = 'Airplane Ticket'\r\n    AND docstatus = 1\r\nGROUP BY\r\n    item\r\nORDER BY\r\n    COUNT(*) DESC\r\n",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
+}
