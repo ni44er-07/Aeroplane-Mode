@@ -19,6 +19,7 @@ class AirplaneTicket(Document):
         gate_num= str(random.randint(1,10))
         gate_letter = random.choice(('A','B','C'))
         self.gate_number = gate_num + gate_letter
+        print(gate_num)
            
     def validate(self):
         # ✅ 1. Enforce unique add-ons
