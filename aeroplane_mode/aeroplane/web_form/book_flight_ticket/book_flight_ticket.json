@@ -19,7 +19,7 @@
  "list_columns": [],
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2025-07-24 15:33:53.297463",
+ "modified": "2025-07-30 14:12:45.629802",
  "modified_by": "Administrator",
  "module": "Aeroplane",
  "name": "book-flight-ticket",
@@ -68,7 +68,7 @@
    "max_length": 0,
    "max_value": 0,
    "precision": "",
-   "read_only": 1,
+   "read_only": 0,
    "reqd": 1,
    "show_in_filter": 0
   }

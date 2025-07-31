@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestAddOnsitem(FrappeTestCase):
+class TestAddontype(FrappeTestCase):
 	pass

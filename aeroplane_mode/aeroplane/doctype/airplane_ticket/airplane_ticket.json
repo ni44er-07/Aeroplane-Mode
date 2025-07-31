@@ -27,7 +27,6 @@
   "column_break_fuqr",
   "duration_of_flight",
   "status",
-  "amended_from",
   "amended_from"
  ],
  "fields": [
@@ -77,16 +76,6 @@
    "fieldtype": "Data",
    "label": "Destination Airport Code",
    "read_only": 1
-  },
-  {
-   "fieldname": "gate_details_section",
-   "fieldtype": "Section Break",
-   "label": "Gate Details"
-  },
-  {
-   "fieldname": "gate_number",
-   "fieldtype": "Data",
-   "label": "Gate Number"
   },
   {
    "fieldname": "section_break_mxtb",
@@ -172,13 +161,23 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "gate_details_section",
+   "fieldtype": "Section Break",
+   "label": "GAte Details"
+  },
+  {
+   "fieldname": "gate_number",
+   "fieldtype": "Data",
+   "label": "Gate Number"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-07-30 11:29:00.830594",
+ "modified": "2025-07-30 14:43:53.229685",
  "modified_by": "Administrator",
  "module": "Aeroplane",
  "name": "Airplane Ticket",

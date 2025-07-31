@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class AddOnsitem(Document):
+class Addontype(Document):
 	pass

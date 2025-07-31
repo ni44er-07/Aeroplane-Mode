@@ -1,7 +1,7 @@
 // Copyright (c) 2025, Rafay and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("Add Ons item", {
+// frappe.ui.form.on("Add on type", {
 // 	refresh(frm) {
 
 // 	},

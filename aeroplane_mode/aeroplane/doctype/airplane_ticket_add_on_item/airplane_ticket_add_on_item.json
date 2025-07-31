@@ -21,11 +21,11 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Item",
-   "options": "Add On Type"
+   "options": "Add on type"
   },
   {
    "default": "0",
-   "fetch_from": "item.amount",
+   "fetch_from": "item.price",
    "fieldname": "amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
@@ -36,7 +36,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-07-22 16:01:09.680012",
+ "modified": "2025-07-30 12:18:32.263182",
  "modified_by": "Administrator",
  "module": "Aeroplane",
  "name": "Airplane Ticket Add-on item",

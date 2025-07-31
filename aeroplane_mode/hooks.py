@@ -7,11 +7,11 @@ app_license = "mit"
 doctype_js = {
     "Airplane Ticket": "public/js/airplane_ticket.js"
 }
-doc_events = {
-    "Airplane Ticket": {
-        "before_insert": "aeroplane_mode.aeroplane.doctype.airplane_ticket.airplane_ticket.py.before_insert"
-    }
-}
+# doc_events = {
+#     "Airplane Ticket": {
+#         "before_insert": "aeroplane_mode.aeroplane.doctype.airplane_ticket.airplane_ticket.py.before_insert"
+#     }
+# }
 
 
 

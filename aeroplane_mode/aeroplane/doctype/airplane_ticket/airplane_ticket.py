@@ -14,13 +14,11 @@ class AirplaneTicket(Document):
         seat_number = str(random.randint(1, 99))
         seat_letter = random.choice(['A', 'B', 'C', 'D'])
         self.seat = seat_number + seat_letter
-        
-        
-        gate_num= str(random.randint(1,10))
-        gate_letter = random.choice(('A','B','C'))
+
+        gate_num = str(random.randint(1, 10))
+        gate_letter = random.choice(['A', 'B', 'C', 'D'])
         self.gate_number = gate_num + gate_letter
-        print(gate_num)
-           
+        
     def validate(self):
         # ✅ 1. Enforce unique add-ons
         unique_add_ons = []
@@ -58,8 +56,13 @@ class AirplaneTicket(Document):
 
     def on_submit(self):
         self.status = "Completed"
-    def before_insert(self):
-            if self.flight:
-                flight = frappe.get_doc("Flight", self.flight)
-                self.flight_price = flight.price
 
+
+
+        def assign_gate(self):
+            if not self.gate_number:
+                gate_num = str(random.randint(1, 10))
+                gate_letter = random.choice(['A', 'B', 'C', 'D'])
+                self.gate_number = gate_num + gate_letter
+                self.save()
+                return {"gate_number": self.gate_number}
