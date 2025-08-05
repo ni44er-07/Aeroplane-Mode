@@ -1,0 +1,44 @@
+<!-- Shop Detail Page -->
+<div class="shop-container">
+
+    <!-- Header -->
+    <div class="shop-header">
+        <h1>{{ doc.shop_name }}</h1>
+        <p>Located at <strong>{{ doc.airport_name }}</strong></p>
+    </div>
+
+    <!-- Shop Info Cards -->
+    <div class="shop-details">
+        <div class="detail-card">
+            <span class="label">Shop Number</span>
+            <span class="value">{{ doc.shop_number }}</span>
+        </div>
+
+        <div class="detail-card">
+            <span class="label">Shop Size</span>
+            <span class="value">{{ doc.shop_size }}</span>
+        </div>
+
+        <div class="detail-card">
+            <span class="label">Occupation Status</span>
+            <span class="value {% if doc.isOccupied %}status-occupied{% else %}status-vacant{% endif %}">
+                {% if doc.isOccupied %} Occupied {% else %} Vacant {% endif %}
+            </span>
+        </div>
+    </div>
+
+    <!-- Status Banner -->
+    <div class="status-banner {% if doc.isOccupied %}occupied{% else %}vacant{% endif %}">
+        {% if doc.isOccupied %}
+            ✅ This shop is currently occupied.
+        {% else %}
+            🏢 This shop is available for lease.
+        {% endif %}
+    </div>
+
+    <!-- Back Button -->
+    <div class="shop-actions">
+        <a href="/shops" class="back-button">← Back to Shops</a>
+    </div>
+
+</div>

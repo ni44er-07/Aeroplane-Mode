@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ doc.shop_name }} - Shop Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      padding: 20px;
+    }
+
+    .shop-card {
+      background: linear-gradient(to bottom right, #ffffff, #f8fbff);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .shop-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+
+    .shop-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+
+    .shop-icon {
+      font-size: 48px;
+      color: #3498db;
+    }
+
+    .shop-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .shop-details {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .shop-details p {
+      margin: 8px 0;
+    }
+
+    .detail-label {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .status-occupied {
+      background: #e74c3c;
+    }
+
+    .status-available {
+      background: #27ae60;
+    }
+
+    .shop-actions {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .interest-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #3498db, #2c80d3);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .interest-button:hover {
+      background: linear-gradient(135deg, #2c80d3, #2471a3);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="shop-card">
+    <!-- Header -->
+    <div class="shop-header">
+      <i class="fas fa-store shop-icon"></i>
+      <div>
+        <div class="shop-title">{{ doc.shop_name }}</div>
+        {% if doc.isOccupied %}
+          <span class="status-badge status-occupied">Occupied</span>
+        {% else %}
+          <span class="status-badge status-available">Available</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div class="shop-details">
+      <p><span class="detail-label">Airport Name:</span> {{ doc.airport_name }}</p>
+      <p><span class="detail-label">Shop Number:</span> {{ doc.shop_number }}</p>
+      <p><span class="detail-label">Shop Size:</span> {{ doc.shop_size }}</p>
+      <p><span class="detail-label">Route:</span> {{ doc.route }}</p>
+    </div>
+
+    <!-- Action Button -->
+    <div class="shop-actions">
+      <a href="/shop-leads?shop_name={{ doc.shop_name }}" class="interest-button">
+        📝 I'm Interested
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

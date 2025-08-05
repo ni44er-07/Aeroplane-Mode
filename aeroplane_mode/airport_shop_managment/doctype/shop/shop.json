@@ -1,0 +1,99 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_rename": 1,
+ "autoname": "format:{shop_name}-{shop_number}",
+ "creation": "2025-07-31 10:48:55.616715",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "shop_name",
+  "airport_name",
+  "column_break_calz",
+  "shop_number",
+  "shop_size",
+  "occupation_status_section",
+  "isoccupied",
+  "route"
+ ],
+ "fields": [
+  {
+   "fieldname": "shop_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shop Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "airport_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Airport Name",
+   "options": "Airport",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_calz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shop_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shop Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shop_size",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shop Size",
+   "reqd": 1
+  },
+  {
+   "fieldname": "occupation_status_section",
+   "fieldtype": "Section Break",
+   "label": "Occupation Status"
+  },
+  {
+   "default": "0",
+   "fieldname": "isoccupied",
+   "fieldtype": "Check",
+   "label": "isOccupied"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  }
+ ],
+ "grid_page_length": 50,
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-05 10:31:26.036969",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Managment",
+ "name": "Shop",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "shops",
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

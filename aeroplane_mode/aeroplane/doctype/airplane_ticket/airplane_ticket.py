@@ -56,13 +56,3 @@ class AirplaneTicket(Document):
 
     def on_submit(self):
         self.status = "Completed"
-
-
-
-        def assign_gate(self):
-            if not self.gate_number:
-                gate_num = str(random.randint(1, 10))
-                gate_letter = random.choice(['A', 'B', 'C', 'D'])
-                self.gate_number = gate_num + gate_letter
-                self.save()
-                return {"gate_number": self.gate_number}
